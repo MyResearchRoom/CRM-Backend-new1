@@ -3,6 +3,8 @@ const app = express();
 const port =  process.env.PORT||5000;
 const cors = require('cors');
 
+app.use(cors());
+
 //const dbroutes = require('./routes/db');
 const signup = require('./routes/signup');
 const login = require('./routes/login');
@@ -12,7 +14,7 @@ const adddepartment = require('./routes/Adddepartment');
 const addmeeting = require('./routes/Addmeeting');
 const addProfile = require('./routes/Addprofile');
 const changepassword= require('./routes/changepassword');
-app.use(cors());
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
