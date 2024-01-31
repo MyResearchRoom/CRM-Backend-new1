@@ -1,0 +1,60 @@
+sql quries;
+//table for add project
+CREATE TABLE project (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  projectName VARCHAR(255) NOT NULL,
+  department VARCHAR(255) NOT NULL,
+  clientName VARCHAR(255) NOT NULL,
+  mobileNo VARCHAR(20) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  startDate DATE NOT NULL,
+  deadlineDate DATE NOT NULL,
+  requirement BLOB, -- Assuming the column type is BLOB for storing the PDF file
+  requirementNotes TEXT,
+  Teamlead VARCHAR(255) NOT NULL
+);
+
+// table for add employee
+
+CREATE TABLE employees (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  employeeName VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  contactNo VARCHAR(15),
+  username VARCHAR(50) UNIQUE NOT NULL,
+  password VARCHAR(50) NOT NULL
+);
+
+// table for meeting and add participant
+CREATE TABLE meetings (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  arranged_by VARCHAR(255) NOT NULL,
+  date DATE NOT NULL,
+  time TIME NOT NULL,
+  subject VARCHAR(255) NOT NULL,
+  participant_name VARCHAR(255) NOT NULL
+);
+// admin sigup table
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL
+);
+// to add projects
+CREATE TABLE projects (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  projectName VARCHAR(255) NOT NULL,
+  department VARCHAR(255) NOT NULL,
+  clientName VARCHAR(255) NOT NULL,
+  mobileNo VARCHAR(15) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  startDate DATE NOT NULL,
+  deadlineDate DATE NOT NULL,
+  requirement BLOB, -- Assuming the column type is BLOB for storing binary data
+  requirementNotes TEXT,
+  Teamlead VARCHAR(255) NOT NULL,
+  selectedMembers JSON, -- JSON column for storing an array of selected members
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
